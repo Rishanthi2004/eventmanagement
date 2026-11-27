@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #F8F3EB;
+  --color-ivory-light: #FCF9F4;
+  --color-cream: #EDE2D3;
+  --color-cream-deep: #E2D4C0;
+  --color-gold: #C5A77A;
+  --color-gold-deep: #9A7B4F;
+  --color-rose: #D8B9AD;
+  --color-sage: #A8A994;
+  --color-sage-deep: #6C705E;
+  --color-espresso: #44382F;
+  --color-espresso-muted: #6E5F53;
+  --color-forest: #2A332C;
+  --color-forest-hover: #1E2620;
+
+  --font-serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-ivory);
+    color: var(--color-espresso);
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: var(--color-ivory);
+    color: var(--color-espresso);
+  }
+
+  h1, h2, h3, h4, .font-editorial {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  button, a, input, select, textarea {
+    outline-color: var(--color-gold-deep);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle luxury linen grain overlay without heavy filters */
+.paper-grain {
+  background-image: radial-gradient(rgba(68, 56, 47, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Editorial scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F3EB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5C5AE;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A77A;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

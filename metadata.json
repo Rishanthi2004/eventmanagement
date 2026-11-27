@@ -1,0 +1,8 @@
+{
+  "name": "ETERNA EVENTS",
+  "description": "Every Celebration Deserves to Be Extraordinary. Luxury event management for weddings, milestone birthdays, corporate summits, concerts, cultural festivals, and bespoke private occasions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
