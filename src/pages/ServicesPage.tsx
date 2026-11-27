@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, ChevronDown } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { ArrowRight, Check } from 'lucide-react';
 import { IMAGES, SERVICES } from '../data/eventsData';
 import { ImageWithFallback, Reveal, WordReveal } from '../components/MotionPrimitives';
 import { ServiceIcon } from '../components/ServiceIcon';
 import { CinematicCtaBanner } from '../components/CinematicCtaBanner';
 
 export function ServicesPage() {
-  const [expandedId, setExpandedId] = useState<string | null>(SERVICES[0].id);
-
   return (
     <div className="bg-[#F8F3EB] text-[#44382F]">
       {/* Compact Split Hero */}
@@ -31,8 +28,8 @@ export function ServicesPage() {
               />
               <Reveal immediate delay={0.15}>
                 <p className="text-sm sm:text-base text-[#6E5F53] leading-relaxed max-w-xl">
-                  From full planning and venue booking to floral design, catering, entertainment,
-                  and seamless on-day coordination—tap any service to view what is included.
+                  From full planning and venue booking to floral mandapam decor, catering,
+                  entertainment, and seamless on-day coordination—every detail crafted under one roof.
                 </p>
               </Reveal>
               <Reveal immediate delay={0.22}>
@@ -50,7 +47,7 @@ export function ServicesPage() {
               <div className="rounded-2xl overflow-hidden aspect-[16/10] border border-[#C5A77A]/30 shadow-md">
                 <ImageWithFallback
                   src={IMAGES.concert}
-                  alt="Orchestral lighting and stage craft"
+                  alt="Grand illuminated Tamil Nadu mandapam stage and evening decor"
                   loading="eager"
                   className="w-full h-full object-cover"
                 />
@@ -60,85 +57,61 @@ export function ServicesPage() {
         </div>
       </section>
 
-      {/* Clean Compact Expandable Service Cards (Super Easy on Mobile & Desktop) */}
+      {/* Balanced 2-Column Service Cards — Images & Details Always Visible on Both Sides */}
       <section className="py-10 sm:py-16">
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-            {SERVICES.map((service) => {
-              const isOpen = expandedId === service.id;
-              return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            {SERVICES.map((service, idx) => (
+              <Reveal key={service.id} delay={(idx % 2) * 0.06} distance={16} className="h-full">
                 <article
-                  key={service.id}
                   id={service.id}
-                  className="bg-[#FCF9F4] border border-[#C5A77A]/25 rounded-2xl overflow-hidden transition-colors hover:border-[#C5A77A]/60"
+                  className="h-full bg-[#FCF9F4] border border-[#C5A77A]/25 rounded-2xl overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#C5A77A]/60 hover:shadow-md transition-all duration-300"
                 >
-                  <button
-                    type="button"
-                    onClick={() => setExpandedId(isOpen ? null : service.id)}
-                    aria-expanded={isOpen}
-                    className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer"
-                  >
-                    <div className="flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-full bg-[#EDE2D3] text-[#9A7B4F] flex items-center justify-center shrink-0 mt-0.5">
-                        <ServiceIcon name={service.icon} className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="text-[11px] text-[#9A7B4F] font-medium tabular-nums">
-                          {service.index}
-                        </p>
-                        <h2 className="font-serif text-xl sm:text-2xl text-[#44382F] leading-snug">
-                          {service.title}
-                        </h2>
-                        <p className="mt-1 text-xs sm:text-sm text-[#6E5F53] leading-relaxed">
-                          {service.shortDesc}
-                        </p>
-                      </div>
+                  <div>
+                    {/* Service Image Always Visible on Every Card */}
+                    <div className="relative h-48 sm:h-56 overflow-hidden bg-[#EDE2D3]">
+                      <ImageWithFallback
+                        src={service.image}
+                        alt={service.title}
+                        fallbackTitle={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
                     </div>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#9A7B4F] shrink-0 mt-2 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-[#EDE2D3] space-y-4">
-                          <div className="rounded-xl overflow-hidden h-40 bg-[#EDE2D3]">
-                            <ImageWithFallback
-                              src={service.image}
-                              alt={service.title}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <p className="text-sm text-[#6E5F53] leading-relaxed">
-                            {service.longDesc}
-                          </p>
-                          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {service.deliverables.map((item) => (
-                              <li
-                                key={item}
-                                className="flex items-start gap-2 text-xs sm:text-sm text-[#44382F]"
-                              >
-                                <Check className="w-4 h-4 text-[#9A7B4F] mt-0.5 shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+                    <div className="p-5 sm:p-6 space-y-4">
+                      <div className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-full bg-[#EDE2D3] text-[#9A7B4F] flex items-center justify-center shrink-0 mt-0.5">
+                          <ServiceIcon name={service.icon} className="w-5 h-5" />
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        <div>
+                          <p className="text-[11px] text-[#9A7B4F] font-medium tabular-nums">
+                            {service.index}
+                          </p>
+                          <h2 className="font-serif text-2xl sm:text-[26px] text-[#44382F] leading-snug">
+                            {service.title}
+                          </h2>
+                          <p className="mt-1 text-xs sm:text-sm text-[#6E5F53] leading-relaxed">
+                            {service.shortDesc}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-3 border-t border-[#EDE2D3]">
+                        {service.deliverables.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-xs sm:text-[13px] text-[#44382F]"
+                          >
+                            <Check className="w-3.5 h-3.5 text-[#9A7B4F] mt-0.5 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </article>
-              );
-            })}
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

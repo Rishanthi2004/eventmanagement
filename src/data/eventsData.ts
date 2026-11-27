@@ -83,11 +83,11 @@ export interface TestimonialItem {
 export const IMAGES = {
   heroGala: '/src/assets/images/indian_hero_mandapam_gala_1795765251674.jpg',
   wedding: '/src/assets/images/tamil_wedding_mandapam_1795765253297.jpg',
-  birthday: '/src/assets/images/indian_birthday_celebration_1795765255202.jpg',
+  birthday: '/assets/aistudio/27f59d4739d402f8e6b5ede6b9396021_66ccf531.jpg',
   corporate: '/src/assets/images/indian_corporate_summit_1795765255834.jpg',
   babyShower: '/src/assets/images/tamil_seemantham_shower_1795765257637.jpg',
-  anniversary: '/src/assets/images/indian_anniversary_banquet_1795765257843.jpg',
-  college: '/src/assets/images/indian_college_function_1795765260058.jpg',
+  anniversary: '/assets/aistudio/4672a2f1b0cbba4f41a80b32b71b81bc_2703f44a.jpg',
+  college: '/assets/aistudio/148823c2ae76296e0dc6319115bafc12_e34a8785.jpg',
   concert: '/src/assets/images/indian_cta_grand_mandapam_1795765266476.jpg',
   cultural: '/src/assets/images/indian_pongal_diwali_festival_1795765265051.jpg',
   privateParty: '/src/assets/images/indian_private_reception_1795765266276.jpg',
@@ -175,6 +175,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
       'Celebrate every chapter surrounded by family and warmth. Whether an auspicious first birthday (Ayush Homam) or a joyful 50th milestone dinner in Chennai, we style warm cream-and-gold stages, fresh jasmine-and-peach marigold arches, bespoke tiered cakes, and memorable family hospitality.',
     image: IMAGES.birthday,
     secondaryImage: IMAGES.privateParty,
+    imagePosition: 'object-[center_45%]',
     guestRange: '30 – 400 Guests',
     leadTime: '3 – 12 Weeks',
     signatureStyle: 'Warm Family Luxury & Fresh Floral Backdrops',
@@ -373,6 +374,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
       'Celebrate decades of companionship surrounded by children, grandchildren, and lifelong friends. Whether a sacred Shashtiabdapoorthi (60th milestone) or an intimate 25th silver jubilee dinner in a Chettinad courtyard, we design heartfelt gatherings glowing with brass lamps, jasmine runners, and archival family memories.',
     image: IMAGES.anniversary,
     secondaryImage: IMAGES.ctaBanquet,
+    imagePosition: 'object-[center_62%]',
     guestRange: '30 – 300 Guests',
     leadTime: '1 – 5 Months',
     signatureStyle: 'Chettinad Heritage Courtyard & Candlelit Brass',
@@ -439,6 +441,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
       'Campus milestones create lifelong memories. We partner with universities, colleges, and heritage schools across South India to produce annual cultural festivals, Bharatanatyam & music showcases, ethnic-day celebrations, and convocation ceremonies with safe crowd logistics and radiant staging.',
     image: IMAGES.college,
     secondaryImage: IMAGES.concert,
+    imagePosition: 'object-[center_65%]',
     guestRange: '250 – 5,000+ Attendees',
     leadTime: '1 – 5 Months',
     signatureStyle: 'Heritage Campus Architecture & Festive Marigold Lighting',
@@ -961,6 +964,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     description:
       'A radiant family celebration beneath jasmine and soft peach marigold arches with a tiered ivory-gold floral cake.',
     image: IMAGES.birthday,
+    imagePosition: 'object-[center_45%]',
     aspect: 'square',
   },
   {
@@ -1000,6 +1004,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     description:
       'Multi-generational family gathering in a carved Chettinad courtyard with jasmine table runners and glowing brass lamps.',
     image: IMAGES.anniversary,
+    imagePosition: 'object-[center_62%]',
     aspect: 'square',
   },
   {
@@ -1013,6 +1018,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     description:
       'Students in pastel silk sarees and cream veshtis celebrating beneath marigold-draped stone arches and warm fairy lights.',
     image: IMAGES.college,
+    imagePosition: 'object-[center_65%]',
     aspect: 'wide',
   },
   {
